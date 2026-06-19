@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://conz1nandel.github.io/portal-milanosport-com/sitemap.xml

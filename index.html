@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>米兰体育app · 信息专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f5f9fc;
+      color: #1a2a3a;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 12px 32px rgba(0, 40, 50, 0.06);
+      overflow: hidden;
+    }
+
+    /* ——— HERO 横幅 ——— */
+    .hero {
+      background: linear-gradient(135deg, #0b4a5f 0%, #1d7a8c 60%, #2ba6b3 100%);
+      padding: 56px 32px 40px 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      opacity: 0.88;
+      max-width: 640px;
+      position: relative;
+      z-index: 2;
+      font-weight: 400;
+      border-left: 3px solid #b2e6ed;
+      padding-left: 16px;
+      margin-top: 6px;
+    }
+
+    /* ——— 网格卡片区 ——— */
+    .grid-panel {
+      padding: 40px 28px 28px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .card {
+      background: #f9fdfe;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 8px rgba(20, 80, 90, 0.04);
+      border: 1px solid #e5f0f2;
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 70, 80, 0.06);
+      border-color: #b8dbe3;
+    }
+
+    .card .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #1a7a8c;
+      background: #ddf0f3;
+      padding: 3px 12px;
+      border-radius: 40px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0b4352;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #2c4652;
+      margin-bottom: 6px;
+    }
+
+    .card .meta-note {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: #5d7b84;
+      border-top: 1px dashed #c6dee4;
+      padding-top: 12px;
+    }
+
+    /* ——— 背景说明 / 延伸阅读段（单列宽） ——— */
+    .context-section {
+      padding: 16px 28px 32px 28px;
+    }
+
+    .context-card {
+      background: #eef7f9;
+      border-radius: 20px;
+      padding: 28px 30px;
+      border-left: 5px solid #2ba6b3;
+    }
+
+    .context-card h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0a3e4b;
+      margin-bottom: 12px;
+    }
+
+    .context-card p {
+      font-size: 0.98rem;
+      color: #1f3f4a;
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+
+    .context-card .highlight-link {
+      display: inline-block;
+      background: #ffffff;
+      padding: 8px 22px;
+      border-radius: 40px;
+      font-weight: 500;
+      box-shadow: 0 1px 6px rgba(0, 50, 60, 0.08);
+      border: 1px solid #cce4e9;
+      transition: background 0.2s;
+    }
+
+    .context-card .highlight-link:hover {
+      background: #d2eef4;
+      border-color: #78c2d1;
+    }
+
+    /* ——— 页尾 ——— */
+    .page-footer {
+      background: #e2f0f3;
+      padding: 22px 28px 24px 28px;
+      border-top: 1px solid #c9dee3;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .page-footer .footnote {
+      font-size: 0.88rem;
+      color: #2c5f6b;
+    }
+
+    .page-footer .footnote a {
+      color: #0d5f70;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #8abdcc;
+      font-weight: 500;
+    }
+
+    .page-footer .footnote a:hover {
+      color: #063845;
+      text-decoration-color: #1a7a8c;
+    }
+
+    /* ——— FAQ 摘要 ——— */
+    .faq-mini {
+      padding: 8px 28px 28px 28px;
+    }
+
+    .faq-mini details {
+      background: #f6fbfc;
+      border-radius: 20px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+      border: 1px solid #d0e5ea;
+      transition: border-color 0.1s;
+    }
+
+    .faq-mini details[open] {
+      border-color: #79bccb;
+    }
+
+    .faq-mini summary {
+      font-weight: 600;
+      color: #0e4c5c;
+      cursor: pointer;
+      font-size: 0.98rem;
+      padding: 4px 0;
+    }
+
+    .faq-mini details p {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: #2a4a56;
+      padding-right: 16px;
+    }
+
+    /* ——— 响应式 ——— */
+    @media (max-width: 720px) {
+      body { padding: 12px; }
+      .hero { padding: 36px 20px 28px 20px; }
+      .hero h1 { font-size: 1.7rem; }
+      .grid-panel { grid-template-columns: 1fr; gap: 20px; padding: 24px 16px 16px 16px; }
+      .card { padding: 22px 18px; }
+      .context-section { padding: 12px 16px 24px 16px; }
+      .context-card { padding: 20px 18px; }
+      .faq-mini { padding: 6px 16px 20px 16px; }
+      .page-footer { flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px 20px; }
+    }
+
+    @media (max-width: 440px) {
+      .hero .sub { font-size: 0.95rem; border-left-width: 2px; padding-left: 12px; }
+      .card h3 { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!-- HERO 横幅 -->
+  <header class="hero">
+    <h1>对照 · 延伸 · 日常查询</h1>
+    <div class="sub">基于 <span style="font-weight:500;">米兰体育app</span> 的信息梳理与场景索引 —— 从运动数据到训练参考</div>
+  </header>
+
+  <!-- 三段自然介绍：网格卡片（特点+场景+对照视角） -->
+  <section class="grid-panel">
+    <div class="card">
+      <span class="tag">日常查询</span>
+      <h3>赛事与运动速览</h3>
+      <p>快速检索队伍、项目、赛程及基础统计，满足日常信息核对。通过 <a href="https://portal-milanosport.com" style="color:#0b6b7c; text-decoration: underline; text-underline-offset:2px; text-decoration-color:#8bc7d4;">米兰体育app</a> 聚合多个运动模块，避免在多页面之间反复切换。</p>
+      <p class="meta-note">覆盖足球、篮球、网球等主流项目，赛历同步更新。</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">对照参考</span>
+      <h3>训练与表现趋势</h3>
+      <p>将个人运动数据与平台收录的参考范围进行比对，辅助理解强度分布、恢复周期及阶段性指标。适合爱好者及业余运动员作为记录参照。</p>
+      <p class="meta-note">示例：周跑量、心率区间、力量训练频次对照。</p>
+    </div>
+
+    <div class="card" style="grid-column: span 1;">
+      <span class="tag">延伸阅读</span>
+      <h3>运动知识 &amp; 专题</h3>
+      <p>从营养策略到损伤预防，精选短篇解读与运动科学摘要。不追求大而全，侧重可操作的背景信息，为日常决策提供依据。</p>
+      <p class="meta-note">内容来源包括运动医学、教练笔记与体育期刊。</p>
+    </div>
+
+    <div class="card" style="grid-column: span 1;">
+      <span class="tag">场景提示</span>
+      <h3>出门前 · 训练后 · 复盘时</h3>
+      <p>三个典型使用节点：查看当天场地/天气/赛事安排；记录训练后主观感受与数据；回顾周期表现并调整计划。</p>
+      <p class="meta-note">可配合移动端直接使用，无需额外配置。</p>
+    </div>
+  </section>
+
+  <!-- 背景说明 + 指向链接的自然嵌入 -->
+  <section class="context-section">
+    <div class="context-card">
+      <h2>从信息聚合到个人运动习惯</h2>
+      <p>
+        许多运动爱好者习惯于在训练前查询近期赛事或环境数据，在训练后对比个人表现与一般参考范围。
+        <a href="https://portal-milanosport.com" style="color:#0b6b7c; font-weight:500; text-decoration: underline; text-underline-offset:2px;">米兰体育app</a> 所整合的模块恰恰覆盖了这些日常环节：从运动项目索引到训练笔记模板，降低信息查找成本。
+        本专题页面仅作背景介绍与功能梳理，不构成任何训练建议或医疗意见。
+      </p>
+      <p style="margin-bottom: 0; font-size:0.92rem; color:#38626e;">
+        延伸阅读建议：运动生理学基础 · 周期化训练入门 · 常见运动损伤识别。
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ 摘要（极简） -->
+  <section class="faq-mini">
+    <details>
+      <summary>使用前需要注册或登录吗？</summary>
+      <p>大部分信息模块在 <a href="https://portal-milanosport.com" style="color:#0d5f70; text-decoration:underline; text-underline-offset:2px;">米兰体育app</a> 中可直接浏览，部分个性化记录功能建议注册后使用。无需付费即可查看基础运动数据与文章。</p>
+    </details>
+    <details>
+      <summary>数据更新频率如何？</summary>
+      <p>赛事数据通常每日更新，训练参考与文章按周或专题节奏刷新。具体可留意平台内标注的日期与版本。</p>
+    </details>
+    <details>
+      <summary>是否支持移动端离线查看？</summary>
+      <p>平台以在线访问为主，部分已加载的页面可通过浏览器缓存临时查看。建议保持网络畅通以获得完整功能。</p>
+    </details>
+  </section>
+
+  <!-- 页尾 提示访问 -->
+  <footer class="page-footer">
+    <div class="footnote">
+      <span>信息页面 · 无诱导内容 · 仅作介绍</span>
+    </div>
+    <div class="footnote">
+      <span>更多运动索引可通过 <a href="https://portal-milanosport.com">米兰体育app</a> 直接浏览</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
